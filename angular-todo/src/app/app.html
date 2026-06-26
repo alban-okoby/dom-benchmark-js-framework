@@ -1,0 +1,28 @@
+
+<div>
+  <input [(ngModel)]="newName" placeholder="Task name" />
+  <select [(ngModel)]="newPriority">
+    <option>low</option>
+    <option>medium</option>
+    <option>high</option>
+  </select>
+  <button (click)="addTask()">Add</button>
+</div>
+<ul>
+  <li *ngFor="let task of tasks; trackBy: trackById">
+    <ng-container *ngIf="editId !== task.id; else editMode">
+      {{ task.name }} ({{ task.priority }})
+      <button (click)="editId = task.id">Edit</button>
+      <button (click)="removeTask(task.id)">Delete</button>
+    </ng-container>
+    <ng-template #editMode>
+      <input [(ngModel)]="task.name" />
+      <select [(ngModel)]="task.priority">
+        <option>low</option>
+        <option>medium</option>
+        <option>high</option>
+      </select>
+      <button (click)="editId = null">Save</button>
+    </ng-template>
+  </li>
+</ul>
