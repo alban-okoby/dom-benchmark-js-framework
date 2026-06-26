@@ -12,7 +12,7 @@ cd react-todo
 ```
 npm i && npm run start
 ```
-Then got to ```http://localhost:5173/```
+Then got to ```http://localhost:3000```
 
 ### For Angular
 ```
